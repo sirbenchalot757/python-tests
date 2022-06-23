@@ -8,7 +8,7 @@ const RunPython = ()=>{
 
   useEffect(()=>{
     const path = message ? '/api/runPython?name='+message : '/api/runPython'
-    fetch(path)
+    fetch('/api/runPython')
     .then(res=>res.json())
     .then(data=>{
       console.log(data)
