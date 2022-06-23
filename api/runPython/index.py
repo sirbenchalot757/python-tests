@@ -12,7 +12,7 @@ class handler(BaseHTTPRequestHandler):
         if input() == "kyle":
             print("fuck you")  """
         message = cow.Cowacter().milk('Hello from Python from a Serverless Function!')
-        response =  self.wfile.write(message.encode()).decode()
+        response =  'Just doin tests'
         self.send_response(200, response)
        
         
