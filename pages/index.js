@@ -4,10 +4,11 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 const RunPython = ()=>{
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState()
 
   useEffect(()=>{
-    fetch('/api/runPython')
+    const path = message ? '/api/runPython?name='+message : '/api/runPython'
+    fetch(path)
     .then(res=>res.json())
     .then(data=>{
       console.log(data)
