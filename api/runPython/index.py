@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler
-from urllib import parse
+from urllib import parse, response
+import json
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -8,11 +9,13 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
+        myResponse = {message: "I got your message right here"}
         if "name" in dic:
             message = "Hello, " + dic["name"] + "!"
         else:
             message = "Hello, stranger!"
-        self.wfile.write(message.encode())
+            json_string = json.dumps(myResponse)
+        self.wfile.write(json_string.encode())
         return
 
     
