@@ -13,7 +13,10 @@ class handler(BaseHTTPRequestHandler):
             print("fuck you")  """
         message = cow.Cowacter().milk('Hello from Python from a Serverless Function!')
         response =  'Just doin tests'
-        self.send_response(200, response)
+        #response = message.milk('Hello from Python from a Serverless Function!')
+        self.wfile.write(bytes(response, 'utf-8'))
+
+        
        
         
         return
