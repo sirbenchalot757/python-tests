@@ -9,14 +9,11 @@ export default function Home() {
   const [yourName, setYourName] = useState()
 
 
-  useEffect(() => {
-    fetch('http://localhost:8000/').then(res=>console.log(res))
-  },)
-
+  const url = 'https://python-tests-b9p828tz8-sirbenchalot757.vercel.app/'
+  const sub= '/api/runPython'
   useEffect(()=>{
-    const path = message ? `/api/runPython?name=${message}` : '/api/runPython'
-    fetch(path)
-    .then(res=>setYourName(res), console.log(res))
+    const path = message ? `${sub}?name=${message}` : sub
+    fetch(path).then(res=>setYourName(res), console.log(res))
   }, [message])
 
 
