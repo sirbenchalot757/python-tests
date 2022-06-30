@@ -5,15 +5,12 @@ import styles from '../styles/Home.module.css'
 
 const RunPython = ()=>{
   const [message, setMessage] = useState()
+  const [yourName, setYourName] = useState()
 
   useEffect(()=>{
     const path = message ? '/api/runPython?name='+message : '/api/runPython'
     fetch('/api/runPython')
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data)
-    }
-    )
+    .then(res=>setYourName(data))
   }, [message])
 
 
@@ -34,43 +31,25 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to the name God
         </h1>
 
         <p className={styles.description}>
-          Send a message to the python script
+          Tell me your name and I will use the magic of snake language to tell you your name
           <code className={styles.code}>pages/index.js</code>
         </p>
         <RunPython/>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          {!message &&  <h2>Please enter a name &rarr;</h2>}
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+         {message && <div className={styles.card}>
+            <h2>The snake gods say that your name is &rarr;</h2>
+            {yourName}
+          </div>}
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+         
         </div>
       </main>
 
