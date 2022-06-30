@@ -16,7 +16,7 @@ export default function Home() {
     fetch(path)
     .then(res => res)
     .then(data => {
-      setMessage(data.message)
+      setYourName(data.message)
     }
     )
   }, [message])
