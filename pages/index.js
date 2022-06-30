@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(()=>{
     const path = message ? `${sub}?name=${message}` : sub
     fetch(path)
-    .then(res => res.json())
+    .then(res => res)
     .then(data => {
       setMessage(data.message)
     }
