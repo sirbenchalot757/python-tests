@@ -14,11 +14,11 @@ const {log} = console
   useEffect(()=>{
     const path = message ? `${sub}?name=${message}` : sub
     fetch(path)
-    .then(res => {log(res); return res})
-    .then(data => {
-      setYourName(data.message)
-    }
-    )
+    .then(function(response) {
+      return response.text();
+    }).then(function(data) {
+      console.log(data);
+    })
   }, [message])
 
 
