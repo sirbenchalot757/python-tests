@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(()=>{
     const path = message ? '/api/runPython?name='+message : '/api/runPython'
     fetch('/api/runPython')
-    .then(res=>setYourName(data))
+    .then(res=>setYourName(res.data))
   }, [message])
 
 
