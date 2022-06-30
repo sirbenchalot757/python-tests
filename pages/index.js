@@ -3,9 +3,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-const RunPython = ()=>{
+
+export default function Home() {
   const [message, setMessage] = useState()
   const [yourName, setYourName] = useState()
+
 
   useEffect(()=>{
     const path = message ? '/api/runPython?name='+message : '/api/runPython'
@@ -14,13 +16,6 @@ const RunPython = ()=>{
   }, [message])
 
 
-  return (
-    <input type="text" value={message} onChange={(e)=>setMessage(e.target.value)}/>
-  )
-}
-
-
-export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -38,7 +33,7 @@ export default function Home() {
           Tell me your name and I will use the magic of snake language to tell you your name
           <code className={styles.code}>pages/index.js</code>
         </p>
-        <RunPython/>
+        <input type="text" value={message} onChange={(e)=>setMessage(e.target.value)}/>
 
         <div className={styles.grid}>
 
