@@ -4,15 +4,34 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 
+
+//let headersList = {
+ // "Accept": "*/*",
+ // "User-Agent": "Thunder Client (https://www.thunderclient.com)"
+// }
+ 
+/*  const testFetch = ()=> fetch("", { 
+   method: "GET",
+   headers: headersList
+ }).then(function(response) {
+   return response.text();
+ }).then(function(data) {
+   console.log(data);
+ }) */
+
 export default function Home() {
   const [message, setMessage] = useState()
   const [yourName, setYourName] = useState()
 
 
+  useEffect(() => {
+    testFetch()
+  },)
+
   useEffect(()=>{
-    const path = message ? '/api/runPython?name='+message : '/api/runPython'
+    const path = message ? `/api/runPython?name=${message}` : '/api/runPython'
     fetch(path)
-    .then(res=>setYourName(res.data))
+    .then(res=>setYourName(res), console.log(res))
   }, [message])
 
 
@@ -31,7 +50,9 @@ export default function Home() {
 
         <p className={styles.description}>
           Tell me your name and I will use the magic of snake language to tell you your name
+
           <code className={styles.code}>pages/index.js</code>
+
         </p>
         <input type="text" value={message} onChange={(e)=>setMessage(e.target.value)}/>
 
@@ -41,7 +62,7 @@ export default function Home() {
 
          {message && <div className={styles.card}>
             <h2>The snake gods say that your name is &rarr;</h2>
-            {yourName}
+            <p>{yourName}</p>
           </div>}
 
          
