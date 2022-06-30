@@ -13,7 +13,12 @@ export default function Home() {
   const sub= '/api/runPython'
   useEffect(()=>{
     const path = message ? `${sub}?name=${message}` : sub
-    fetch(path).then(res=>setYourName(res), console.log(res))
+    fetch(path)
+    .then(res => res.json())
+    .then(data => {
+      setMessage(data.message)
+    }
+    )
   }, [message])
 
 
