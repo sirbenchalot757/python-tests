@@ -7,14 +7,14 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   const [message, setMessage] = useState()
   const [yourName, setYourName] = useState()
-
+const {log} = console
 
   const url = 'https://python-tests-b9p828tz8-sirbenchalot757.vercel.app/'
   const sub= '/api/runPython'
   useEffect(()=>{
     const path = message ? `${sub}?name=${message}` : sub
     fetch(path)
-    .then(res => res)
+    .then(res => {log(res); return res})
     .then(data => {
       setYourName(data.message)
     }
