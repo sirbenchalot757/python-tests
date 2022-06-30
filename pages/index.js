@@ -17,7 +17,7 @@ const {log} = console
     .then(function(response) {
       return response.text();
     }).then(function(data) {
-      console.log(data);
+      setYourName(data);
     })
   }, [message])
 
