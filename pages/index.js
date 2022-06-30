@@ -4,28 +4,13 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 
-
-//let headersList = {
- // "Accept": "*/*",
- // "User-Agent": "Thunder Client (https://www.thunderclient.com)"
-// }
- 
-/*  const testFetch = ()=> fetch("", { 
-   method: "GET",
-   headers: headersList
- }).then(function(response) {
-   return response.text();
- }).then(function(data) {
-   console.log(data);
- }) */
-
 export default function Home() {
   const [message, setMessage] = useState()
   const [yourName, setYourName] = useState()
 
 
   useEffect(() => {
-    testFetch()
+    fetch('http://localhost:8000/').then(res=>console.log(res))
   },)
 
   useEffect(()=>{
