@@ -1,15 +1,12 @@
 from http.server import BaseHTTPRequestHandler
-from urllib import parse
+from pythonPlayground.pythonScripts import nameGuesser
 
+do_GET = nameGuesser.do_GET
+
+#this file being located in the special next.js api folder will be automatically parsed by vercel as a python serverless function when run on their servers.
+
+#this file will not work in local development, but will work in vercel.
+
+## YOU SHOULD NOT NEED TO EDIT THIS FILE
 class handler(BaseHTTPRequestHandler):
-   def do_GET(self):
-        s = self.path
-        dic = dict(parse.parse_qsl(parse.urlsplit(s).query))
-        self.send_response(200)
-        self.send_header('Content-type','text/html')
-        self.end_headers()
-        if "name" in dic:
-            message = "Hello, " + dic["name"] + "!"
-        else:
-            message = "Hello, stranger!"
-        self.wfile.write(bytes(message, "utf8"))
+   do_GET
