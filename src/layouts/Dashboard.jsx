@@ -199,14 +199,12 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Stack spacing={20}>
+        <Stack direction='row' spacing={20}>
         <PythonForm setOutput={setOutput}/>
         <Card>
           <CardHeader title="Python Output" />
           <CardContent>
-           {output?.values?.map && output.values.map(e=> <Typography variant="body2" color="text.secondary">
-            {e}
-            </Typography>)}
+           {output}
           </CardContent>
         </Card>
         </Stack>

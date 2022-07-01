@@ -10,7 +10,7 @@ const PythonForm = ({setOutput}) => {
     const [message, setMessage] = useState('')
     const [yourName, setYourName] = useState('')
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => setOutput(callPythonApi(JSON.stringify(data)));
+    const onSubmit = data => callPythonApi(JSON.stringify(data), setOutput);
 
   return (
     <Stack spacing={5}>
